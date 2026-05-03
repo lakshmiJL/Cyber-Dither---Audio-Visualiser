@@ -26,9 +26,9 @@ class CyberDither {
     this.isHoldingSpeed = false;
     this.currentTrackIdx = 0;
     this.tracks = [
-      '/audio/track-pop.wav',
-      '/audio/track-dance.wav',
-      '/audio/track-lofi.wav'
+      'audio/track-pop.wav',
+      'audio/track-dance.wav',
+      'audio/track-lofi.wav'
     ];
     
     this.mouseDustIdx = 0;
