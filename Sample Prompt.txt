@@ -1,0 +1,33 @@
+CYBER-DITHER MASTER PROMPT
+==========================
+
+TASK: Build a high-fidelity, 3D audio-reactive visualizer web application named "Cyber-Dither".
+
+1. CORE TECHNOLOGY STACK:
+-------------------------
+* Framework: Vanilla JavaScript + Three.js + GSAP for animations.
+* Audio: Web Audio API with AnalyserNode for real-time frequency data.
+* Visual Style: Cyberpunk/Synthwave aesthetic using "Star Dust" particles and custom Bayer Dither shaders for a retro-digital textured look.
+
+2. VISUAL ELEMENTS & PARTICLE SYSTEM:
+-------------------------------------
+* Star Dust: Implement a particle system with 2,500 tiny, needle-sharp particles (tapered cylinders).
+* Particle Shaders: Use onBeforeCompile to inject custom GLSL. Each particle should have a neon-colored "Head" and a faded "White Tail." Implement a pulsing "Glow-Fade" effect on the heads and a time-based "twinkle" flicker.
+* Dynamics: Particles should drift slightly in 3D space. Implement a "Warp Speed" mechanic where holding a button increases particle velocity and stretches their tails on the Z-axis.
+
+3. INTERACTIVE FEATURES:
+------------------------
+* Mouse Trail: Create a secondary particle system for "Mouse Dust" — tiny, tail-less squares that spawn along the cursor's path and fade out quickly.
+* Holographic HUD: Build a glassmorphism overlay using CSS. The HUD should "tilt" in 3D space based on mouse position. Include a frequency bar visualizer, an FPS counter, and a "Track Status" label.
+* Audio Control: Support a multi-track playlist (Pop, Dance, Lo-Fi, Industrial). Audio playback rate should sync with the visual speed multiplier.
+
+4. PERFORMANCE & DEPLOYMENT:
+----------------------------
+* Optimization: Use THREE.InstancedMesh for all particles to ensure 60+ FPS on mobile and desktop.
+* Build System: Use Vite for bundling.
+* CI/CD: Create a GitHub Actions workflow to automate deployment to GitHub Pages using Node.js 24.
+
+5. DESIGN AESTHETIC:
+--------------------
+* Colors: Use high-contrast neon palettes (Neon Pink: #ff007f, Cyber Cyan: #00f2ff, Electric Violet: #bc13fe).
+* Post-Processing: Apply an UnrealBloomPass for a soft, premium neon glow and a custom Bayer Dither shader for a dithered pixel-art texture.
