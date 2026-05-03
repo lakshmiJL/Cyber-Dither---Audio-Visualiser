@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CYBER-DITHER // AUDIO REACTIVE 3D</title>
+    <meta name="description" content="A premium audio-reactive 3D visualizer using custom dither shaders and real-time audio analysis." />
+  </head>
+  <body>
+    <div id="app">
+      <div class="cursor"></div>
+      <div class="cursor-dot"></div>
+      <div class="scanning-line"></div>
+      
+      <div class="overlay">
+        <header class="header">
+          <div class="title-group">
+            <h1>CYBER-DITHER</h1>
+            <p>Experimental Audio Visualizer v1.0.4</p>
+          </div>
+          
+          <div class="status-panel">
+            <div class="status-item">
+              <span class="label">ENGINE:</span>
+              <span class="value">THREE.JS / GLSL</span>
+            </div>
+            <div class="status-item">
+              <span class="label">AUDIO:</span>
+              <span class="value" id="audio-status">DISCONNECTED</span>
+            </div>
+            <div class="status-item">
+              <span class="label">SHADERS:</span>
+              <span class="value">DITHER_Bayer_8x8</span>
+            </div>
+            <div class="status-item">
+              <span class="label">FPS:</span>
+              <span class="value" id="fps-counter">60</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="audio-viz" id="audio-viz">
+          <!-- Bars generated via JS -->
+        </div>
+
+        <div class="controls">
+          <audio id="bg-music" loop crossorigin="anonymous">
+            <source src="/audio/generated-track.wav" type="audio/x-wav">
+          </audio>
+          <button id="start-audio" class="btn-trigger">Play Cyber-Song</button>
+          <button id="switch-track" class="btn-trigger">Next Track</button>
+          <button id="upload-audio" class="btn-trigger">Upload Track</button>
+          <input type="file" id="audio-input" accept="audio/*" style="display: none;">
+          <button id="toggle-dither" class="btn-trigger">Toggle Shader</button>
+        </div>
+
+        <div class="bottom-bar">
+          <div id="timestamp" class="mono-text">00:00:000</div>
+          <div class="speed-group">
+            <div id="glitch-warning" class="glitch-text hidden">YOU CRAZY, SLOW DOWN</div>
+            <button id="hold-speed" class="btn-hold">HOLD FOR SPEED</button>
+            <div id="speed-mult" class="mono-text">1.00x</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
