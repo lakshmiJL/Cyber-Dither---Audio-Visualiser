@@ -28,7 +28,8 @@ class CyberDither {
     this.tracks = [
       'audio/track-pop.wav',
       'audio/track-dance.wav',
-      'audio/track-lofi.wav'
+      'audio/track-lofi.wav',
+      'audio/generated-track.wav'
     ];
     
     this.mouseDustIdx = 0;
@@ -99,15 +100,27 @@ class CyberDither {
     switchBtn.addEventListener('click', () => {
       this.currentTrackIdx = (this.currentTrackIdx + 1) % this.tracks.length;
       const audio = document.getElementById('bg-music');
+      
+      // Ensure the path is correct relative to the base
       audio.src = this.tracks[this.currentTrackIdx];
-      audio.play();
+      audio.load();
+      
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error("Playback failed:", error);
+          document.getElementById('audio-status').innerText = 'RETRYING...';
+        });
+      }
       
       // Visual feedback
-      const names = ['CYBER POP', 'ENERGY DANCE', 'LO-FI POP'];
+      const names = ['CYBER POP', 'ENERGY DANCE', 'LO-FI POP', 'HEAVY INDUSTRIAL'];
       const status = document.getElementById('song-status');
-      status.innerText = names[this.currentTrackIdx];
-      status.style.color = '#fff';
-      setTimeout(() => status.style.color = 'var(--text-accent)', 1000);
+      if (status) {
+        status.innerText = names[this.currentTrackIdx];
+        status.style.color = '#fff';
+        setTimeout(() => status.style.color = 'var(--neon-cyan)', 1000);
+      }
     });
     
     holdBtn.addEventListener('mousedown', startHold);
